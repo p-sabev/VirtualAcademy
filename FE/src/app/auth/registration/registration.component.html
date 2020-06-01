@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="signup-form">
+                <form [formGroup]="registerForm" (ngSubmit)="registerUser();">
+                    <h2 class="mt-4">Register</h2>
+                    <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+                    
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="first_name" 
+                        placeholder="First Name" formControlName="name">
+                        <span class="validation-error" *ngIf="!registerForm.get('name').valid && registerForm.get('name').touched">
+                            <i class="fa fa-exclamation-triangle pr-2"></i>
+                            <span *ngIf="registerForm.get('name').errors?.required">This field is required!</span>
+                            <span *ngIf="registerForm.get('name').errors['maxlength']">Maximum length of 50 characters exceeded!</span>
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="last_name" 
+                        placeholder="Last Name" formControlName="surname">
+                        <span class="validation-error" *ngIf="!registerForm.get('surname').valid && registerForm.get('surname').touched">
+                            <i class="fa fa-exclamation-triangle pr-2"></i>
+                            <span *ngIf="registerForm.get('surname').errors?.required">This field is required!</span>
+                            <span *ngIf="registerForm.get('surname').errors['maxlength']">Maximum length of 50 characters exceeded!</span>
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="email" 
+                        placeholder="Email" formControlName="email" autocomplete="disabled">
+                        <span class="validation-error" *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched">
+                            <i class="fa fa-exclamation-triangle pr-2"></i>
+                            <span *ngIf="registerForm.get('email').errors?.required">This field is required!</span>
+                            <span *ngIf="registerForm.get('email').errors?.pattern">Enter valid email address!</span>
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" class="form-control" name="age" 
+                        placeholder="Age" formControlName="age">
+                        <span class="validation-error" *ngIf="!registerForm.get('age').valid && registerForm.get('age').touched">
+                            <i class="fa fa-exclamation-triangle pr-2"></i>
+                            <span *ngIf="registerForm.get('age').errors?.required">This field is required!</span>
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" 
+                        placeholder="Password" formControlName="password" autocomplete="off">
+                        <span class="validation-error" *ngIf="!registerForm.get('password').valid && registerForm.get('password').touched">
+                            <i class="fa fa-exclamation-triangle pr-2"></i>
+                            <span *ngIf="registerForm.get('password').errors?.required">This field is required!</span>
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="confirm_password" 
+                        placeholder="Confirm Password" formControlName="confirmPassword" autocomplete="off">
+                        <span class="validation-error" *ngIf="!registerForm.get('confirmPassword').valid && registerForm.get('confirmPassword').touched">
+                            <i class="fa fa-exclamation-triangle pr-2"></i>
+                            <span *ngIf="registerForm.get('confirmPassword').errors?.required">This field is required!</span>
+                        </span>
+                    </div>        
+
+                    <div class="form-group mt-4">
+                        <button type="submit" [disabled]="!registerForm.valid || 
+                        (registerForm.get('confirmPassword').value !== registerForm.get('password').value)" 
+                        class="btn btn-success btn-lg btn-block">Register Now</button>
+                    </div>
+                </form>
+                <div class="text-center">Already have an account? <a [routerLink]="'../log-in'">Log in</a></div>
+            </div>
+        </div>
+    </div>
+</div>
