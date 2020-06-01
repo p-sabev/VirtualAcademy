@@ -3,6 +3,7 @@
         <div class="col-12">
             <h4 class="text-center">Favorite courses</h4>
             todo add favorite courses section
+
             <h4 class="text-center">All courses</h4>
             <p-carousel [value]="courses" [numVisible]="4" styleClass="custom-carousel"
             [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
@@ -19,16 +20,15 @@
                                 </div>
 
                                 <div class="rating">
-                                    <p-rating [(ngModel)]="course.averageRating" 
-                                              [cancel]="false" 
+                                    <p-rating [(ngModel)]="course.averageRating"
+                                              [cancel]="false"
                                               (onRate)="handleRate($event, course)"></p-rating>
                                     ({{course.usersRated}})
                                 </div>
-            
-                                <div class="car-buttons">
-                                    <button pButton type="button" class="ui-button-secondary" icon="pi pi-search"></button>
-                                    <button pButton type="button" class="ui-button-secondary" icon="pi pi-star"></button>
-                                    <button pButton type="button" class="ui-button-secondary" icon="pi pi-cog"></button>
+
+                                <div class="car-buttons mt-3">
+                                  <button class="btn btn-success btn-sm"><i class="fa fa-star"></i></button>
+                                  <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
                                 </div>
                             </div>
                         </div>

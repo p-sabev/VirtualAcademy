@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TableModule} from 'primeng/table';
 import {CarouselModule} from 'primeng/carousel';
 import {RatingModule} from 'primeng/rating';
+import {ActionAccessDirective} from '../_directives/action-access.directive';
 
 // NGX
 // import {TranslateModule} from '@ngx-translate/core';
@@ -21,6 +22,7 @@ import {RatingModule} from 'primeng/rating';
     RatingModule
   ],
   declarations: [
+    ActionAccessDirective
   ],
   providers: [],
   exports: [
@@ -28,7 +30,8 @@ import {RatingModule} from 'primeng/rating';
     FormsModule,
     ReactiveFormsModule,
     CarouselModule,
-    RatingModule
+    RatingModule,
+    ActionAccessDirective
   ],
   bootstrap: []
 })
