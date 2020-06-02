@@ -16,6 +16,8 @@ import { HomeComponent } from './home/home.component';
 
 import { SharedModule } from './shared/shared.module';
 import { EmittersService } from './_services/emitter.service';
+import {AuthGuard} from "./_guards/auth.guard";
+import {MyProfileComponent} from "./modules/my-profile/my-profile.component";
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { EmittersService } from './_services/emitter.service';
     HeaderComponent,
     UsersComponent,
     CoursesComponent,
-    HomeComponent
+    HomeComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import { EmittersService } from './_services/emitter.service';
     SharedModule
   ],
   providers: [
+    AuthGuard,
     AuthService,
     {
       provide: HTTP_INTERCEPTORS,

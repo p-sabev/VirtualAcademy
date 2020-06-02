@@ -7,6 +7,7 @@ import {TableModule} from 'primeng/table';
 import {CarouselModule} from 'primeng/carousel';
 import {RatingModule} from 'primeng/rating';
 import {ActionAccessDirective} from '../_directives/action-access.directive';
+import {InputSwitchModule} from 'primeng/inputswitch';
 
 // NGX
 // import {TranslateModule} from '@ngx-translate/core';
@@ -19,7 +20,8 @@ import {ActionAccessDirective} from '../_directives/action-access.directive';
     ReactiveFormsModule,
     TableModule,
     CarouselModule,
-    RatingModule
+    RatingModule,
+    InputSwitchModule
   ],
   declarations: [
     ActionAccessDirective
@@ -31,6 +33,7 @@ import {ActionAccessDirective} from '../_directives/action-access.directive';
     ReactiveFormsModule,
     CarouselModule,
     RatingModule,
+    InputSwitchModule,
     ActionAccessDirective
   ],
   bootstrap: []

@@ -1,40 +1,71 @@
 <div class="container">
     <div class="row">
-        <div class="col-12">
-            <h4 class="text-center">Favorite courses</h4>
-            todo add favorite courses section
-
-            <h4 class="text-center">All courses</h4>
-            <p-carousel [value]="courses" [numVisible]="4" styleClass="custom-carousel"
-            [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
-                <ng-template let-course pTemplate="item">
-                    <div class="car-details">
-                        <div class="p-grid p-nogutter">
-                            <div class="p-col-12">
-                                <!-- <img src="assets/showcase/images/demo/car/{{car.brand}}.png" /> -->
-                            </div>
-                            <div class="p-col-12 car-data">
-                                <div class="car-title">{{course.name}}</div>
-                                <div class="car-subtitle">{{course.description}} <br>
-                                {{course.createdAt | date:'dd.MM.y':'':''}}
-                                </div>
-
-                                <div class="rating">
-                                    <p-rating [(ngModel)]="course.averageRating"
-                                              [cancel]="false"
-                                              (onRate)="handleRate($event, course)"></p-rating>
-                                    ({{course.usersRated}})
-                                </div>
-
-                                <div class="car-buttons mt-3">
-                                  <button class="btn btn-success btn-sm"><i class="fa fa-star"></i></button>
-                                  <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
-                                </div>
-                            </div>
-                        </div>
+        <div class="col-12 mb-4" *ngIf="favoriteCourses && favoriteCourses.length">
+          <h4 class="text-center">Favorite courses</h4>
+          <p-carousel [value]="favoriteCourses" [numVisible]="4" styleClass="custom-carousel"
+                      [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+            <ng-template let-course pTemplate="item">
+              <div class="car-details">
+                <div class="p-grid p-nogutter">
+                  <div class="p-col-12">
+                  </div>
+                  <div class="p-col-12 car-data">
+                    <div class="car-title">{{course.name}}</div>
+                    <div class="car-subtitle">{{course.description}} <br>
+                      {{course.createdAt | date:'dd.MM.y':'':''}}
                     </div>
-                </ng-template>
-            </p-carousel>
+
+                    <div class="rating">
+                      <p-rating [(ngModel)]="course.averageRating"
+                                [cancel]="false"
+                                (onRate)="handleRate($event, course)"></p-rating>
+                      ( {{course.usersRated}} )
+                    </div>
+
+                    <div class="car-buttons mt-3">
+<!--                      <button class="btn btn-primary btn-sm" (click)="saveCourseInFavorites(course._id)"><i class="fa fa-star"></i></button>-->
+<!--                      <button *appActionAccess="'EditCourses'" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </p-carousel>
+
+
         </div>
+      <div class="col-12">
+        <h4 class="text-center">All courses</h4>
+        <p-carousel [value]="courses" [numVisible]="4" styleClass="custom-carousel"
+                    [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+          <ng-template let-course pTemplate="item">
+            <div class="car-details">
+              <div class="p-grid p-nogutter">
+                <div class="p-col-12">
+                  <!-- <img src="assets/showcase/images/demo/car/{{car.brand}}.png" /> -->
+                </div>
+                <div class="p-col-12 car-data">
+                  <div class="car-title">{{course.name}}</div>
+                  <div class="car-subtitle">{{course.description}} <br>
+                    {{course.createdAt | date:'dd.MM.y':'':''}}
+                  </div>
+
+                  <div class="rating">
+                    <p-rating [(ngModel)]="course.averageRating"
+                              [cancel]="false"
+                              (onRate)="handleRate($event, course)"></p-rating>
+                    ({{course.usersRated}})
+                  </div>
+
+                  <div class="car-buttons mt-3">
+                    <button class="btn btn-primary btn-sm" (click)="saveCourseInFavorites(course._id)"><i class="fa fa-star"></i></button>
+                    <button *appActionAccess="'EditCourses'" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </p-carousel>
+      </div>
     </div>
 </div>

@@ -30,15 +30,24 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', resp.token);
       }
       if (resp.user) {
-        localStorage.setItem('name', resp.user.name);
-        localStorage.setItem('id', resp.user._id);
-        localStorage.setItem('roles', resp.user.roles);
+        this.saveUserValues(resp.user);
       }
       this.router.navigate(['../home']);
       this.emitterService.loggedIn.emit(true);
     }, error => {
       console.error(error);
     });
+  }
+
+  saveUserValues(user) {
+    const permissions = {};
+    localStorage.setItem('name', user.name);
+    localStorage.setItem('id', user._id);
+    localStorage.setItem('roles', user.roles);
+    user.roles.forEach(role => {
+      permissions[role] = true;
+    });
+    localStorage.setItem('permissionsFlat', JSON.stringify(permissions));
   }
 
 }

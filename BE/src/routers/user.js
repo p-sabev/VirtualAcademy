@@ -162,5 +162,77 @@ router.get('/users/:id/avatar', async (req, res) => {
     }
 });
 
+router.post('/users/grantPermission', async (req, res) => {
+    const simplePermissions = ['ViewCourses'];
+    const adminPermissions = ['EditCourses', 'ViewUsers', 'EditUsers'];
+
+    try {
+        const user = await User.findById(req.body.id);
+        let permissions;
+        if (user) {
+            if (req.body.admin) {
+                permissions = [...simplePermissions, ...adminPermissions];
+            } else {
+                permissions = simplePermissions;
+            }
+        } else {
+            return res.status(404).send();
+        }
+        user.roles = permissions;
+        await user.save();
+        res.status(200).send({user});
+    } catch (err) {
+        res.status(400).send(err);
+    }
+});
+
+router.delete('/users/:id', auth, async (req, res) => {
+    try {
+        const user = await User.findOneAndDelete( { _id: req.params.id } );
+
+        if (!user) {
+            return res.status(404).send();
+        }
+
+        return res.send(user);
+    } catch (err) {
+        res.status(500).send();
+    }
+});
+
+router.get('/users/saveCourseToFavorite/:id', auth, async (req, res) => {
+    try {
+        req.user.favoriteCourses.push(req.params.id);
+        await req.user.save();
+        return res.status(200).send();
+    } catch (err) {
+        res.status(500).send();
+    }
+});
+
+router.post('/users/edit', auth, async (req, res) => {
+    const updates = Object.keys(req.body);
+    const allowedUpdates = ['name', 'surname', 'age'];
+    const isValidOperation = updates.every( update => allowedUpdates.includes(update) );
+
+    if (!isValidOperation) {
+        return res.status(400).send( {error: 'Invalid updates!'} );
+    }
+
+    try {
+        const user = await User.findOne( { _id: req.user._id } );
+
+        if (!user) {
+            return res.status(404).send();
+        }
+
+        updates.forEach(update => user[update] = req.body[update]);
+        await user.save();
+
+        return res.send(user);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+});
 
 module.exports = router;

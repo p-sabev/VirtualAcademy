@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="464ec454-eea7-4c19-8728-f1583a98f745" name="Default Changelist" comment="" />
+    <list default="true" id="464ec454-eea7-4c19-8728-f1583a98f745" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/FE/src/app/_guards/auth.guard.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FE/src/app/modules/my-profile/my-profile.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FE/src/app/modules/my-profile/my-profile.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FE/src/app/modules/my-profile/my-profile.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BE/src/routers/course.js" beforeDir="false" afterPath="$PROJECT_DIR$/BE/src/routers/course.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BE/src/routers/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/BE/src/routers/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/app/_services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/_services/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/app/_services/courses.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/_services/courses.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/app/_services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/_services/user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/app/auth/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/auth/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/app/auth/registration/registration.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/auth/registration/registration.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/app/modules/courses/courses.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/modules/courses/courses.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/app/modules/courses/courses.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/modules/courses/courses.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/app/modules/users/users.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/modules/users/users.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/app/modules/users/users.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/modules/users/users.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/app/modules/users/users.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/modules/users/users.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/app/shared/shared.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/shared/shared.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/app/ui/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/ui/header/header.component.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,6 +67,7 @@
       <option name="presentableId" value="Default" />
       <updated>1591003483497</updated>
       <workItem from="1591003488733" duration="3540000" />
+      <workItem from="1591010254717" duration="10810000" />
     </task>
     <task id="LOCAL-00001" summary="Added directive">
       <created>1591010050340</created>
@@ -53,7 +76,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591010050340</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added directive">
+      <created>1591010316213</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1591010316213</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -65,17 +95,21 @@
     <option name="LAST_COMMIT_MESSAGE" value="Added directive" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1591010049050">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1591010314067">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768/-1366.0.1366.768@0.0.1366.768" timestamp="1591010049050" />
-    <state x="275" y="116" key="Vcs.Push.Dialog.v2" timestamp="1591010067447">
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.768/-1366.0.1366.768@0.0.1366.768" timestamp="1591010314067" />
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2" timestamp="1591010523419">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="275" y="116" key="Vcs.Push.Dialog.v2/0.0.1366.768/-1366.0.1366.768@0.0.1366.768" timestamp="1591010067447" />
-    <state x="389" y="172" key="git4idea.merge.GitPullDialog" timestamp="1591010058744">
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2/0.0.1366.768/-1366.0.1366.768@0.0.1366.768" timestamp="1591010523419" />
+    <state x="389" y="172" key="git4idea.merge.GitPullDialog" timestamp="1591010511569">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="389" y="172" key="git4idea.merge.GitPullDialog/0.0.1366.768/-1366.0.1366.768@0.0.1366.768" timestamp="1591010058744" />
+    <state x="389" y="172" key="git4idea.merge.GitPullDialog/0.0.1366.768/-1366.0.1366.768@0.0.1366.768" timestamp="1591010511569" />
+    <state x="339" y="172" key="run.anything.popup" timestamp="1591123120264">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="339" y="172" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1591123120264" />
   </component>
 </project>

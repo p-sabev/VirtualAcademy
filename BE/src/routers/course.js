@@ -27,6 +27,15 @@ router.get('/courses', auth,  async (req, res) => {
     }
 });
 
+router.get('/courses/favorite', auth,  async (req, res) => {
+    try {
+        const courses = await Course.find().where('_id').in(req.user.favoriteCourses).exec();
+        res.send(courses);
+    } catch (err) {
+        res.status(400).send(err);
+    }
+});
+
 router.get('/courses/:id', auth, async (req, res) => {
     const _id = req.params.id;
 

@@ -8,4 +8,6 @@ export interface User {
     updatedAt: string;
     __v: number;
     _id: string;
+    roles: [];
+    isAdmin?: boolean;
   }

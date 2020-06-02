@@ -10,6 +10,7 @@ import { CoursesService } from 'src/app/_services/courses.service';
 })
 export class CoursesComponent implements OnInit {
   courses: Course[];
+  favoriteCourses: Course[];
   responsiveOptions = [
     {
         breakpoint: '1024px',
@@ -31,6 +32,7 @@ export class CoursesComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchCourses();
+    this.getFavoriteCourses();
   }
 
   fetchCourses() {
@@ -58,6 +60,23 @@ export class CoursesComponent implements OnInit {
           el.averageRating = resp.averageRating;
         }
       });
+    }, error => {
+      console.error(error);
+    });
+  }
+
+  saveCourseInFavorites(id) {
+    this.coursesService.saveCourseToFavorite(id).subscribe(resp => {
+      this.getFavoriteCourses();
+    }, error => {
+      console.error(error);
+    });
+  }
+
+  getFavoriteCourses() {
+    this.coursesService.fetchFavoriteCourses().subscribe(resp => {
+      this.favoriteCourses = resp;
+      console.log(this.favoriteCourses);
     }, error => {
       console.error(error);
     });

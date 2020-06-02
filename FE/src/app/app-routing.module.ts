@@ -5,6 +5,8 @@ import { UsersComponent } from './modules/users/users.component';
 import { CoursesComponent } from './modules/courses/courses.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistrationComponent } from './auth/registration/registration.component';
+import {AuthGuard} from "./_guards/auth.guard";
+import {MyProfileComponent} from "./modules/my-profile/my-profile.component";
 
 
 const routes: Routes = [
@@ -18,12 +20,20 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'my-profile',
+    component: MyProfileComponent
+  },
+  {
     path: 'users',
-    component: UsersComponent
+    component: UsersComponent,
+    data: { permission: 'ViewUsers' },
+    canActivate: [AuthGuard]
   },
   {
     path: 'courses',
-    component: CoursesComponent
+    component: CoursesComponent,
+    data: { permission: 'ViewCourses' },
+    canActivate: [AuthGuard]
   },
   {
     path: 'log-in',

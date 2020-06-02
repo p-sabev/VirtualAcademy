@@ -3,8 +3,8 @@
     <a class="navbar-brand" href="#">
         <img src="./../../assets/images/home-bulb.png" alt="Logo" style="height: 50px;">
     </a>
-    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" 
-            data-target="#navbarCollapse" aria-controls="navbarCollapse" 
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+            data-target="#navbarCollapse" aria-controls="navbarCollapse"
             aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -13,18 +13,20 @@
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="'home'">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item active" *ngIf="loggedIn">
-          <a class="nav-link" [routerLink]="'users'">Users <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active" *ngIf="loggedIn">
-          <a class="nav-link" [routerLink]="'courses'">Courses <span class="sr-only">(current)</span></a>
-        </li>
+        <ng-container *ngIf="loggedIn">
+          <li class="nav-item active" *appActionAccess="'ViewUsers'">
+            <a class="nav-link" [routerLink]="'users'">Users <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active" *appActionAccess="'ViewCourses'">
+            <a class="nav-link" [routerLink]="'courses'">Courses <span class="sr-only">(current)</span></a>
+          </li>
+        </ng-container>
       </ul>
 
       <div class="form-inline mt-2 mt-md-0">
         <!-- User menu for -Change site -Log off -Change password -Change language -->
         <div class="btn-group dropleft" *ngIf="loggedIn">
-          <div class="dropdown-toggle text-light cursor-pointer" 
+          <div class="dropdown-toggle text-light cursor-pointer"
                data-toggle="dropdown" aria-haspopup="true"
                (click)="getUsername()"
                aria-expanded="false" style="padding-top: 7px;">
@@ -32,32 +34,23 @@
           </div>
           <ul class="dropdown-menu px-1 user-panel">
             <li>
-              <p class="text-center text-uppercase text-primary my-2" style="font-size: 20px;"><b>{{username}}</b></p>
+              <p class="text-center text-uppercase text-primary my-2" style="font-size: 16px;"><b>{{username}}</b></p>
             </li>
-            <!-- <li class="p-1">
-              <div class="form-group lang-icon mb-0">
-                <select class="select-language form-control" title="{{'ChooseLanguage' | translate}}" name="language"
-                        (click)="$event.stopPropagation()" (change)="changeLang()" [(ngModel)]="language">
-                  <option value="bg">Български</option>
-                  <option value="en">English</option>
-                </select>
-              </div>
-            </li>
-            <hr class="mb-0 mt-2"/>
-            <li class="p-1 text-center cursor-pointer text-primary" [routerLink]="['change-password']">
-              <button class="btn btn-outline-secondary btn-sm" style="width: 100%;">
-                <i class="fa fa-key" aria-hidden="true"></i>
-                <span class="pl-2" translate>ChangePassword</span>
+            <li class="p-1 text-center" [routerLink]="'my-profile'">
+              <button class="btn btn-outline-secondary btn-sm"
+                      style="width: 100%;">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <span class="pl-2" translate>My account</span>
               </button>
-            </li>-->
+            </li>
             <hr class="m-0"/>
             <li class="p-1 text-center" (click)="logOut();">
-              <button class="btn btn-outline-danger btn-sm" 
+              <button class="btn btn-outline-danger btn-sm"
                       style="width: 100%;">
                 <i class="fa fa-power-off" aria-hidden="true"></i>
                 <span class="pl-2" translate>Log оut</span>
               </button>
-            </li> 
+            </li>
           </ul>
         </div>
 

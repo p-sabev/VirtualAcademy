@@ -24,10 +24,34 @@ export class UsersComponent implements OnInit {
   fetchUsers() {
     this.userService.getUsers().subscribe(resp => {
       console.log(resp);
+      resp.forEach(user => {
+        user.isAdmin = user.roles.length > 1;
+      });
       this.users = resp;
     }, error => {
       console.error(error);
     });
   }
 
+  deleteUser(id) {
+    this.userService.deleteUser(id).subscribe(resp => {
+      console.log(resp);
+      this.fetchUsers();
+    }, error => {
+      console.error(error);
+    });
+  }
+
+  changeUserRole(user) {
+    const body = {
+      id: user._id,
+      admin: !(user.roles.length > 1)
+    };
+
+    this.userService.changeUserRoles(body).subscribe(resp => {
+      this.fetchUsers();
+    }, error => {
+      console.error(error);
+    });
+  }
 }

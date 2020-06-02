@@ -8,6 +8,8 @@
                         <th>Surname</th>
                         <th>Email</th>
                         <th>Age</th>
+                        <th *appActionAccess="'EditUsers'">Administration role</th>
+                        <th *appActionAccess="'EditUsers'">Delete</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-user>
@@ -16,6 +18,12 @@
                         <td>{{user.surname}}</td>
                         <td>{{user.email}}</td>
                         <td>{{user.age}}</td>
+                        <td *appActionAccess="'EditUsers'">
+                          <p-inputSwitch [(ngModel)]="user.isAdmin" (onChange)="changeUserRole(user)"></p-inputSwitch>
+                        </td>
+                        <td *appActionAccess="'EditUsers'">
+                          <i class="fa fa-trash-o fa-2x text-danger cursor-pointer" (click)="deleteUser(user._id)"></i>
+                        </td>
                     </tr>
                 </ng-template>
             </p-table>
