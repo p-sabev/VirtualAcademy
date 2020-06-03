@@ -12,7 +12,7 @@ export class UsersService {
   }
 
   deleteUser(id) {
-    return this.http.delete('api/users/asd' + id);
+    return this.http.delete('api/users/' + id);
   }
 
   changeUserRoles(body) {
