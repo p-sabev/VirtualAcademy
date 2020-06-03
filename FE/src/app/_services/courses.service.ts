@@ -22,4 +22,8 @@ export class CoursesService {
   saveCourseToFavorite(id) {
     return this.http.get('api/users/saveCourseToFavorite/' + id);
   }
+
+  deleteCourseById(id) {
+    return this.http.delete('api/courses/' + id);
+  }
 }

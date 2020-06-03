@@ -18,9 +18,16 @@ import { SharedModule } from './shared/shared.module';
 import { EmittersService } from './_services/emitter.service';
 import {AuthGuard} from "./_guards/auth.guard";
 import {MyProfileComponent} from "./modules/my-profile/my-profile.component";
+import {LoaderComponent} from "./ui/loader/loader.component";
+import {LoaderInterceptorService} from "./_interceptors/loader-interceptor.service";
+
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { NotificationsEmitterService } from './_services/notifications.service';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
+    LoaderComponent,
     AppComponent,
     LoginComponent,
     RegistrationComponent,
@@ -34,14 +41,22 @@ import {MyProfileComponent} from "./modules/my-profile/my-profile.component";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule,
+    SimpleNotificationsModule.forRoot()
   ],
   providers: [
     AuthGuard,
     AuthService,
+    NotificationsEmitterService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptorService,
       multi: true
     },
     EmittersService

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/_services/user.service';
 import { User } from './users.model';
+import {NotificationsEmitterService} from "../../_services/notifications.service";
 
 @Component({
   selector: 'app-users',
@@ -10,14 +11,11 @@ import { User } from './users.model';
 })
 export class UsersComponent implements OnInit {
 
-  constructor(private userService: UsersService) {
-    console.log('In constructor');
-   }
+  constructor(private userService: UsersService, private msgService: NotificationsEmitterService) { }
 
    users: User[];
 
   ngOnInit(): void {
-    console.log('INIT');
     this.fetchUsers();
   }
 
@@ -30,6 +28,11 @@ export class UsersComponent implements OnInit {
       this.users = resp;
     }, error => {
       console.error(error);
+      if (error.error && typeof error.error === 'string') {
+        this.msgService.Error.emit(error.error);
+      } else if (error.statusText && typeof error.statusText === 'string') {
+        this.msgService.Error.emit(error.statusText);
+      }
     });
   }
 
@@ -37,8 +40,14 @@ export class UsersComponent implements OnInit {
     this.userService.deleteUser(id).subscribe(resp => {
       console.log(resp);
       this.fetchUsers();
+      this.msgService.Success.emit('Successfully deleted user');
     }, error => {
       console.error(error);
+      if (error.error && typeof error.error === 'string') {
+        this.msgService.Error.emit(error.error);
+      } else if (error.statusText && typeof error.statusText === 'string') {
+        this.msgService.Error.emit(error.statusText);
+      }
     });
   }
 
@@ -50,8 +59,14 @@ export class UsersComponent implements OnInit {
 
     this.userService.changeUserRoles(body).subscribe(resp => {
       this.fetchUsers();
+      this.msgService.Success.emit('Successfully changed role');
     }, error => {
       console.error(error);
+      if (error.error && typeof error.error === 'string') {
+        this.msgService.Error.emit(error.error);
+      } else if (error.statusText && typeof error.statusText === 'string') {
+        this.msgService.Error.emit(error.statusText);
+      }
     });
   }
 }

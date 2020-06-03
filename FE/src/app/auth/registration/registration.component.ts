@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/_services/auth.service';
 import { Router } from '@angular/router';
 import { EmittersService } from 'src/app/_services/emitter.service';
+import {NotificationsEmitterService} from "../../_services/notifications.service";
 
 @Component({
   selector: 'app-registration',
@@ -22,6 +23,7 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private router: Router,
+              private msgService: NotificationsEmitterService,
               private emitterService: EmittersService) { }
 
   ngOnInit(): void {
@@ -44,6 +46,11 @@ export class RegistrationComponent implements OnInit {
       this.emitterService.loggedIn.emit(true);
     }, error => {
       console.error(error);
+      if (error.error && typeof error.error === 'string') {
+        this.msgService.Error.emit(error.error);
+      } else if (error.statusText && typeof error.statusText === 'string') {
+        this.msgService.Error.emit(error.statusText);
+      }
     });
   }
 

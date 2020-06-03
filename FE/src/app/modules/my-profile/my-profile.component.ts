@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/_services/user.service';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {NotificationsEmitterService} from "../../_services/notifications.service";
 
 @Component({
   selector: 'app-my-profile',
@@ -12,7 +13,9 @@ import {Router} from "@angular/router";
 export class MyProfileComponent implements OnInit {
   editForm: any;
 
-  constructor(private userService: UsersService, private router: Router) {
+  constructor(private userService: UsersService,
+              private router: Router,
+              private msgService: NotificationsEmitterService) {
   }
 
   ngOnInit() {
@@ -30,6 +33,11 @@ export class MyProfileComponent implements OnInit {
       });
     }, error => {
       console.error(error);
+      if (error.error && typeof error.error === 'string') {
+        this.msgService.Error.emit(error.error);
+      } else if (error.statusText && typeof error.statusText === 'string') {
+        this.msgService.Error.emit(error.statusText);
+      }
     });
   }
 
@@ -45,6 +53,11 @@ export class MyProfileComponent implements OnInit {
       this.router.navigate(['home']);
     }, error => {
       console.error(error);
+      if (error.error && typeof error.error === 'string') {
+        this.msgService.Error.emit(error.error);
+      } else if (error.statusText && typeof error.statusText === 'string') {
+        this.msgService.Error.emit(error.statusText);
+      }
     });
   }
 }

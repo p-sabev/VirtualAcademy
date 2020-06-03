@@ -58,8 +58,13 @@
                   </div>
 
                   <div class="car-buttons mt-3">
-                    <button class="btn btn-primary btn-sm" (click)="saveCourseInFavorites(course._id)"><i class="fa fa-star"></i></button>
-                    <button *appActionAccess="'EditCourses'" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                    <button class="btn btn-primary btn-sm" (click)="saveCourseInFavorites(course._id)">
+                      <i class="fa fa-star"></i>
+                    </button>
+                    <button *appActionAccess="'EditCourses'" class="btn btn-danger btn-sm"
+                            (click)="deleteCourse(course._id)">
+                      <i class="fa fa-trash-o"></i>
+                    </button>
                   </div>
                 </div>
               </div>

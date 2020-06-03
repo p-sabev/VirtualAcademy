@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from './courses.model';
 import { CoursesService } from 'src/app/_services/courses.service';
+import {NotificationsEmitterService} from "../../_services/notifications.service";
 
 @Component({
   selector: 'app-courses',
@@ -28,7 +29,7 @@ export class CoursesComponent implements OnInit {
         numScroll: 1
     }
 ];
-  constructor(private coursesService: CoursesService) { }
+  constructor(private coursesService: CoursesService, private msgService: NotificationsEmitterService) { }
 
   ngOnInit(): void {
     this.fetchCourses();
@@ -41,6 +42,11 @@ export class CoursesComponent implements OnInit {
       console.log(this.courses);
     }, error => {
       console.error(error);
+      if (error.error && typeof error.error === 'string') {
+        this.msgService.Error.emit(error.error);
+      } else if (error.statusText && typeof error.statusText === 'string') {
+        this.msgService.Error.emit(error.statusText);
+      }
     });
   }
 
@@ -62,6 +68,11 @@ export class CoursesComponent implements OnInit {
       });
     }, error => {
       console.error(error);
+      if (error.error && typeof error.error === 'string') {
+        this.msgService.Error.emit(error.error);
+      } else if (error.statusText && typeof error.statusText === 'string') {
+        this.msgService.Error.emit(error.statusText);
+      }
     });
   }
 
@@ -70,6 +81,11 @@ export class CoursesComponent implements OnInit {
       this.getFavoriteCourses();
     }, error => {
       console.error(error);
+      if (error.error && typeof error.error === 'string') {
+        this.msgService.Error.emit(error.error);
+      } else if (error.statusText && typeof error.statusText === 'string') {
+        this.msgService.Error.emit(error.statusText);
+      }
     });
   }
 
@@ -79,6 +95,25 @@ export class CoursesComponent implements OnInit {
       console.log(this.favoriteCourses);
     }, error => {
       console.error(error);
+      if (error.error && typeof error.error === 'string') {
+        this.msgService.Error.emit(error.error);
+      } else if (error.statusText && typeof error.statusText === 'string') {
+        this.msgService.Error.emit(error.statusText);
+      }
+    });
+  }
+
+  deleteCourse(id) {
+    this.coursesService.deleteCourseById(id).subscribe(() => {
+      this.getFavoriteCourses();
+      this.fetchCourses();
+    }, error => {
+      console.error(error);
+      if (error.error && typeof error.error === 'string') {
+        this.msgService.Error.emit(error.error);
+      } else if (error.statusText && typeof error.statusText === 'string') {
+        this.msgService.Error.emit(error.statusText);
+      }
     });
   }
 }

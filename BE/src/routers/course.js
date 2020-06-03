@@ -96,6 +96,20 @@ router.post('/courses/getByIds', auth, async (req, res) => {
     }
 });
 
+router.delete('/courses/:id', auth, async (req, res) => {
+    try {
+        const course = await Course.findOneAndDelete( { _id: req.params.id } );
+
+        if (!course) {
+            return res.status(404).send();
+        }
+
+        return res.send(course);
+    } catch (err) {
+        res.status(500).send();
+    }
+});
+
 // router.patch('/tasks/:id', auth, async (req, res) => {
 //     const updates = Object.keys(req.body);
 //     const allowedUpdates = ['description', 'name'];
