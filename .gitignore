@@ -1,2 +1,4 @@
 node_modules/
 config/
+/BE/node_modules/
+/BE/config/
