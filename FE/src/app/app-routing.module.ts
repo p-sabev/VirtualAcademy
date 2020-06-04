@@ -7,6 +7,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegistrationComponent } from './auth/registration/registration.component';
 import {AuthGuard} from "./_guards/auth.guard";
 import {MyProfileComponent} from "./modules/my-profile/my-profile.component";
+import {AddCourseComponent} from "./modules/courses/add-course/add-course.component";
 
 
 const routes: Routes = [
@@ -33,6 +34,12 @@ const routes: Routes = [
     path: 'courses',
     component: CoursesComponent,
     data: { permission: 'ViewCourses' },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'courses/add',
+    component: AddCourseComponent,
+    data: { permission: 'EditCourses' },
     canActivate: [AuthGuard]
   },
   {

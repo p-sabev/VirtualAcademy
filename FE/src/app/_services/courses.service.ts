@@ -26,4 +26,8 @@ export class CoursesService {
   deleteCourseById(id) {
     return this.http.delete('api/courses/' + id);
   }
+
+  addNewCourse(body): Observable<any> {
+    return this.http.post('api/courses', body);
+  }
 }

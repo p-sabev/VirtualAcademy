@@ -1,11 +1,11 @@
 {
     "/api": {
-      "target": "http://localhost:4000",
-      "secure": false,
+      "target": "https://virtual-academy-api.herokuapp.com",
+      "secure": true,
       "logLevel": "debug",
       "changeOrigin": true,
       "pathRewrite": {
         "^/api": ""
       }
     }
-}  
+}

@@ -24,6 +24,7 @@ import {LoaderInterceptorService} from "./_interceptors/loader-interceptor.servi
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { NotificationsEmitterService } from './_services/notifications.service';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {AddCourseComponent} from "./modules/courses/add-course/add-course.component";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     UsersComponent,
     CoursesComponent,
     HomeComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    AddCourseComponent
   ],
   imports: [
     BrowserModule,
